@@ -9,10 +9,11 @@ import Foundation
 import AVFoundation
 import UIKit
 
-// ViewModel - Handles User Intent Functions, Data Processing, init AVCaptureSessions
 
-/// CameraViewModel manages the camera functionalities in the app.
-class Camera: NSObject {
+/// Camera ViewModel manages the camera functionalities in the app.
+/// This class acts as an intermediary between the camera hardware and the view, processing user intents
+/// and managing the data flow related to camera operations.
+class Camera: NSObject, ObservableObject {
     // MARK: - Properties
 
     /// The capture session for managing real-time capture activity.
@@ -20,16 +21,25 @@ class Camera: NSObject {
 
     /// The output for still photo capture.
     var cameraOutput: AVCapturePhotoOutput?
+    
+    private(set) var photo: Photo?
 
-    /// A completion handler for returning the captured image.
-    private var photoCaptureCompletion: ((UIImage?) -> Void)?
+    /// A "completion handler" for returning the captured image.
+    private var photoCaptureCompletion: ((Photo?) -> Void)?
 
     
+    /// Initializing + Setting Up Camera Session as soon as ViewModel is available in the View
+    override init() {
+        captureSession = AVCaptureSession()
+        cameraOutput = AVCapturePhotoOutput()
+        super.init()
+        setupCameraSession()
+    }
+
     // MARK: - Camera Setup
 
     /// Sets up the camera session with necessary inputs and outputs.
     func setupCameraSession() {
-        captureSession = AVCaptureSession()
         captureSession?.sessionPreset = .high // Use high preset for high-quality photo capture.
 
         guard let backCamera = AVCaptureDevice.default(for: .video),
@@ -42,8 +52,7 @@ class Camera: NSObject {
         if captureSession?.canAddInput(input) == true {
             captureSession?.addInput(input)
         }
-
-        cameraOutput = AVCapturePhotoOutput()
+        
         if let output = cameraOutput, captureSession?.canAddOutput(output) == true {
             captureSession?.addOutput(output)
         }
@@ -64,8 +73,8 @@ class Camera: NSObject {
     // MARK: - Photo Capture
 
     /// Captures a photo.
-    /// - Parameter completion: A closure that gets called with the captured image.
-    func capturePhoto(completion: @escaping (UIImage?) -> Void) {
+    /// - Parameter completion: A closure (provided by the View who calls it, typically to update the view), that gets called with the captured image.
+    func capturePhoto(completion: @escaping (Photo?) -> Void) {
         let settings = AVCapturePhotoSettings()
         cameraOutput?.capturePhoto(with: settings, delegate: self)
         self.photoCaptureCompletion = completion
@@ -81,7 +90,8 @@ extension Camera: AVCapturePhotoCaptureDelegate {
             photoCaptureCompletion?(nil)
             return
         }
-        photoCaptureCompletion?(image)
+        self.photo = Photo(image: image)
+        photoCaptureCompletion?(self.photo)
     }
 }
 

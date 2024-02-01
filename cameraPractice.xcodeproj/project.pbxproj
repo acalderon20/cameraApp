@@ -14,6 +14,9 @@
 		91112E8E2B63052E00CC2EBB /* cameraPracticeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91112E8D2B63052E00CC2EBB /* cameraPracticeTests.swift */; };
 		91112E982B63052E00CC2EBB /* cameraPracticeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91112E972B63052E00CC2EBB /* cameraPracticeUITests.swift */; };
 		91112E9A2B63052E00CC2EBB /* cameraPracticeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91112E992B63052E00CC2EBB /* cameraPracticeUITestsLaunchTests.swift */; };
+		915003DC2B6AAEC400298E16 /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915003DB2B6AAEC400298E16 /* PhotoModel.swift */; };
+		91C5FB332B66054900F13ADA /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C5FB322B66054900F13ADA /* Camera.swift */; };
+		91C5FB352B697F3600F13ADA /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C5FB342B697F3600F13ADA /* CameraView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,9 @@
 		91112E932B63052E00CC2EBB /* cameraPracticeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = cameraPracticeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		91112E972B63052E00CC2EBB /* cameraPracticeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cameraPracticeUITests.swift; sourceTree = "<group>"; };
 		91112E992B63052E00CC2EBB /* cameraPracticeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cameraPracticeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		915003DB2B6AAEC400298E16 /* PhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
+		91C5FB322B66054900F13ADA /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
+		91C5FB342B697F3600F13ADA /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +101,9 @@
 			isa = PBXGroup;
 			children = (
 				91112E7C2B63052C00CC2EBB /* cameraPracticeApp.swift */,
-				91112E7E2B63052C00CC2EBB /* ContentView.swift */,
+				91C5FB362B697F3D00F13ADA /* Model */,
+				91C5FB382B697FC100F13ADA /* ViewModel */,
+				91C5FB372B697FB900F13ADA /* Views */,
 				91112E802B63052D00CC2EBB /* Assets.xcassets */,
 				91112E822B63052D00CC2EBB /* Preview Content */,
 			);
@@ -125,6 +133,31 @@
 				91112E992B63052E00CC2EBB /* cameraPracticeUITestsLaunchTests.swift */,
 			);
 			path = cameraPracticeUITests;
+			sourceTree = "<group>";
+		};
+		91C5FB362B697F3D00F13ADA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				915003DB2B6AAEC400298E16 /* PhotoModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		91C5FB372B697FB900F13ADA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				91112E7E2B63052C00CC2EBB /* ContentView.swift */,
+				91C5FB342B697F3600F13ADA /* CameraView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		91C5FB382B697FC100F13ADA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				91C5FB322B66054900F13ADA /* Camera.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,6 +292,9 @@
 			files = (
 				91112E7F2B63052C00CC2EBB /* ContentView.swift in Sources */,
 				91112E7D2B63052C00CC2EBB /* cameraPracticeApp.swift in Sources */,
+				91C5FB332B66054900F13ADA /* Camera.swift in Sources */,
+				915003DC2B6AAEC400298E16 /* PhotoModel.swift in Sources */,
+				91C5FB352B697F3600F13ADA /* CameraView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
